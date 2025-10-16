@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WatchSports - Streams links</title>
+  <link rel="stylesheet" href="/style.css">
+<link rel="icon" type="image/png" sizes="512x512" href="https://watchsports.cyou/watchsports.png">
+  <style>
+  </style>
+</head>
+
+<body>
+ 
+    <header class="site-header">
+        <div class="site-container">
+            <a href="/" target="_blank" class="logo">WatchSports</a>
+            <nav class="nav-menu">
+                <a href="/page/contact-us/">Conatct-us</a>
+                <a href="/page/terms-of-service/">Terms Of Service</a>
+            </nav>
+        </div>
+    </header>
+
+
+  <main>
+    <div class="match-hero">
+      <div class="league-tag">
+        <img id="leagueLogo" src="" alt="League Logo">
+        <span id="league"></span>
+      </div>
+      <div class="match-title" id="match-title"></div>
+      <div class="team-vs">
+        <div class="team-card">
+          <img id="homeLogo" src="" alt="Home Team Logo">
+          <span id="home"></span>
+        </div>
+        <div class="vs-badge">VS</div>
+        <div class="team-card">
+          <img id="awayLogo" src="" alt="Away Team Logo">
+          <span id="away"></span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="other">
+
+      Streams Links
+    </div>
+
+    <!-- Streams Table -->
+    <table class="streams-table">
+      <thead>
+        <tr>
+          <th>Streamer</th>
+          <th>Channel</th>
+          <th>Language</th>
+          <th>Quality</th>
+          <th>Ads</th>
+          <th>AdBlock</th>
+          <th>Bitrate</th>
+          <th>MISR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a class="stream-link" id="stream1">WatchSports official</a></td>
+          <td>24/7 Online</td>
+          <td>English</td>
+          <td><b>HD</b></td>
+          <td>1</td>
+          <td>Yes</td>
+          <td>1200Kbps</td>
+          <td>2MB</td>
+        </tr>
+        <tr>
+          <td><a class="stream-link" id="stream2">Guddu Streams</a></td>
+          <td>Sports Official</td>
+          <td>English</td>
+          <td><b>FHD</b></td>
+          <td>2</td>
+          <td>No</td>
+          <td>1500Kbps</td>
+          <td>3MB</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <script>
+    function getParam(name) {
+      return new URLSearchParams(window.location.search).get(name);
+    }
+
+    document.getElementById("league").innerText = getParam("league");
+    document.getElementById("match-title").innerText = getParam("home") + " vs " + getParam("away");
+    document.getElementById("home").innerText = getParam("home");
+    document.getElementById("away").innerText = getParam("away");
+    document.getElementById("leagueLogo").src = getParam("leagueLogo");
+    document.getElementById("homeLogo").src = getParam("homeLogo");
+    document.getElementById("awayLogo").src = getParam("awayLogo");
+
+    const embedLink = getParam("embed");
+    if (embedLink) {
+      document.querySelectorAll(".stream-link").forEach(link => {
+        link.href = "https://jhangmang.pages.dev?embed=" + encodeURIComponent(embedLink);
+      });
+    }
+  </script>
+  <script>
+    const embedUrl = new URLSearchParams(window.location.search).get("embed");
+
+    if (!embedUrl) {
+      document.body.style.background = "black";
+      document.body.innerHTML = "<h2 style='color:white; text-align:center; margin-top:20%;'>No Stream Available</h2>";
+    }
+  </script>
+
+  
+    <footer class="site-footer" role="contentinfo" aria-label="Footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="logo" aria-hidden="true">WS</div>
+                <div>
+                    <div class="brand-name">WatchSports</div>
+                    <div class="desc">
+                        Your go-to hub for uninterrupted live sports — from NFL, NBA, MLB, and UFC/MMA to cricket, NHL,
+                        college football, and more.<br>
+                        Enjoy your favorite matches with WatchSports. Please watch responsibly and follow local
+                        streaming laws.
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-credits">
+                © <span id="yr"></span> WatchSports — All rights reserved.<br>
+                WatchSports does not host or broadcast live content; all streams and links are provided for
+                information and reference purposes only.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
